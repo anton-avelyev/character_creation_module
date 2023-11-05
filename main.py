@@ -1,7 +1,25 @@
+# character_creation_module/main.py
+"""Модуль предназначен для создания персонажа.
+Выполняется присвоение имени и выбор роли.
+Опционально модуль позволяет потренироваться в действиях
+с персонажем.
+"""
+
 from random import randint
+
+# Новый импорт.
+# Из модуля start_game_banner, который расположен в папке graphic_arts,
+# импортируем функцию run_screensaver().
+from graphic_arts.start_game_banner import run_screensaver
 
 
 def attack(char_name: str, char_class: str) -> str:
+    """Attack function. Calculates damage caused to enemy.
+
+    Keyword arguments:
+    char_name -- character name
+    char_class -- character role
+    """
     if char_class == 'warrior':
         return (f'{char_name} нанёс урон противнику равный '
                 f'{5 + randint(3, 5)}')
@@ -14,6 +32,12 @@ def attack(char_name: str, char_class: str) -> str:
 
 
 def defence(char_name: str, char_class: str) -> str:
+    """Defence function. Calculates damage fight off from enemy.
+
+    Keyword arguments:
+    char_name -- character name
+    char_class -- character role
+    """
     if char_class == 'warrior':
         return (f'{char_name} блокировал '
                 f'{10 + randint(5, 10)} урона')
@@ -26,6 +50,12 @@ def defence(char_name: str, char_class: str) -> str:
 
 
 def special(char_name: str, char_class: str) -> str:
+    """Run special possibility of character.
+
+    Keyword arguments:
+    char_name -- character name
+    char_class -- character role
+    """
     if char_class == 'warrior':
         return (f'{char_name} применил специальное умение '
                 f'«Выносливость {80 + 25}»')
@@ -38,6 +68,12 @@ def special(char_name: str, char_class: str) -> str:
 
 
 def start_training(char_name: str, char_class: str) -> str:
+    """Start training function. Show how is it used to be in game.
+
+    Keyword arguments:
+    char_name -- character name
+    char_class -- character role
+    """
     if char_class == 'warrior':
         print(f'{char_name}, ты Воитель — отличный боец '
               f'ближнего боя.')
@@ -65,6 +101,7 @@ def start_training(char_name: str, char_class: str) -> str:
 
 
 def choice_char_class() -> str:
+    """Функция выбора роли для персонажа."""
     approve_choice: str = ''
     char_class: str = ''
     while approve_choice != 'y':
@@ -86,7 +123,8 @@ def choice_char_class() -> str:
     return char_class
 
 
-def main() -> None:
+if __name__ == '__main__':
+    run_screensaver()
     print('Приветствую тебя, искатель приключений!')
     print('Прежде чем начать игру...')
     char_name: str = input('...назови себя: ')
@@ -98,4 +136,4 @@ def main() -> None:
     print(start_training(char_name, char_class))
 
 
-main()
+# main()
